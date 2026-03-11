@@ -128,7 +128,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 <li><Link href="/contato" className="hover:text-primary transition-colors">Contato</Link></li>
                 <li><Link href="/suporte" className="hover:text-primary transition-colors">Suporte</Link></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Sobre Nós</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Expediente</a></li>
               </ul>
             </div>
             
