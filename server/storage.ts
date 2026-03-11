@@ -1,38 +1,36 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import { articles, type Article, type InsertArticle } from "@shared/schema";
+import { eq, inArray, sql } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getArticle(slug: string): Promise<Article | undefined>;
+  getArticles(limit?: number): Promise<Article[]>;
+  createArticle(article: InsertArticle): Promise<Article>;
+  updateArticleContent(id: number, content: string): Promise<Article>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async getArticle(slug: string): Promise<Article | undefined> {
+    const [article] = await db.select().from(articles).where(eq(articles.slug, slug));
+    return article;
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getArticles(limit: number = 20): Promise<Article[]> {
+    return await db.select().from(articles).orderBy(sql`${articles.createdAt} DESC`).limit(limit);
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async createArticle(insertArticle: InsertArticle): Promise<Article> {
+    const [article] = await db.insert(articles).values(insertArticle).returning();
+    return article;
   }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  
+  async updateArticleContent(id: number, content: string): Promise<Article> {
+    const [article] = await db.update(articles)
+      .set({ content })
+      .where(eq(articles.id, id))
+      .returning();
+    return article;
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
