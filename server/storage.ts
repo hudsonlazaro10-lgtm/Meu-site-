@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { articles, type Article, type InsertArticle } from "@shared/schema";
+import { articles, contactMessages, supportTickets, type Article, type InsertArticle, type ContactMessage, type InsertContactMessage, type SupportTicket, type InsertSupportTicket } from "@shared/schema";
 import { eq, inArray, sql } from "drizzle-orm";
 
 export interface IStorage {
@@ -7,6 +7,11 @@ export interface IStorage {
   getArticles(limit?: number): Promise<Article[]>;
   createArticle(article: InsertArticle): Promise<Article>;
   updateArticleContent(id: number, content: string): Promise<Article>;
+  
+  createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
+  
+  createSupportTicket(ticket: InsertSupportTicket): Promise<SupportTicket>;
+  getSupportTickets(): Promise<SupportTicket[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -30,6 +35,20 @@ export class DatabaseStorage implements IStorage {
       .where(eq(articles.id, id))
       .returning();
     return article;
+  }
+
+  async createContactMessage(message: InsertContactMessage): Promise<ContactMessage> {
+    const [msg] = await db.insert(contactMessages).values(message).returning();
+    return msg;
+  }
+
+  async createSupportTicket(ticket: InsertSupportTicket): Promise<SupportTicket> {
+    const [supportTicket] = await db.insert(supportTickets).values(ticket).returning();
+    return supportTicket;
+  }
+
+  async getSupportTickets(): Promise<SupportTicket[]> {
+    return await db.select().from(supportTickets).orderBy(sql`${supportTickets.createdAt} DESC`);
   }
 }
 
