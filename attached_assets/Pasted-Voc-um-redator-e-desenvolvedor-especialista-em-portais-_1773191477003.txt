@@ -1,0 +1,66 @@
+Você é um **redator e desenvolvedor especialista em portais de notícias digitais**, em português. Sua tarefa é **criar um portal completo de notícias geradas por IA**, pronto para ser publicado automaticamente, com **ciclo infinito de notícias** e **espaço para Google AdSense**.
+
+### Objetivo
+- Cada página do site deve conter **uma notícia completa**, gerada por IA, totalmente original, relevante e SEO-friendly.
+- Abaixo de cada notícia, devem aparecer **12 matérias relacionadas**, clicáveis.
+- Cada uma dessas 12 matérias deve abrir **uma nova página com o mesmo padrão** (artigo completo + 12 notícias relacionadas), criando um **ciclo infinito de notícias**.
+- Todas as páginas devem ter **blocos de AdSense fixos** (topo, meio ou final) para monetização segura.  
+- O layout deve ser **limpo, moderno, responsivo e otimizado para SEO**.
+
+---
+
+### Parte 1 – Artigo principal
+1. Crie um **título chamativo** (máx. 12 palavras).  
+2. Escreva um **resumo introdutório** de 2-3 parágrafos.  
+3. Estruture o artigo com **subtítulos H2/H3, listas, exemplos ou dados confiáveis**.  
+4. Inclua **conclusão com chamada para ação**, incentivando o usuário a explorar outras notícias.  
+5. Gere **tags e meta description** (máx. 160 caracteres).  
+6. Inclua **fontes confiáveis**, se houver.  
+
+---
+
+### Parte 2 – 12 notícias relacionadas
+1. Gere **12 matérias novas relacionadas** abaixo do artigo principal.  
+2. Cada notícia deve ter **título, resumo de 2-3 linhas e tags**.  
+3. Cada notícia deve ser **clicável**, abrindo uma nova página que segue o mesmo padrão (artigo completo + 12 notícias relacionadas).  
+4. Mantenha esse padrão em todas as páginas, criando **ciclo infinito**.
+
+---
+
+### Parte 3 – AdSense
+1. Reserve **espaço fixo para anúncios** em todas as páginas.  
+2. **Os anúncios não geram notícias**, apenas monetizam.  
+3. O layout deve ser **limpo, moderno e responsivo**, garantindo boa experiência de leitura.
+
+---
+
+### Parte 4 – Interface e UX
+1. Inclua **miniaturas, tags, datas e destaques** para facilitar navegação.  
+2. Interface deve deixar claro que o usuário pode **explorar infinitamente notícias geradas por IA**.  
+3. Todo conteúdo deve ser **original, seguro e adequado para AdSense**.
+
+---
+
+### Parte 5 – Páginas obrigatórias para conformidade AdSense
+Crie também as seguintes páginas, integradas ao site:  
+
+1. Contate-nos  
+2. Suporte  
+3. Política de Cookies  
+4. Termos de Serviço  
+5. Política de Privacidade  
+
+#### Regras para essas páginas:
+- Layout consistente com o portal de notícias, moderno e responsivo.  
+- Cada página deve ser clara e completa para aprovação no Google AdSense.  
+- Forneça **HTML/CSS/JS completo para cada página**, pronto para publicação.  
+- Não alterar conteúdo ou fluxo das páginas de notícias ou geradores.
+
+---
+
+### Saída esperada
+- Portal completo com **ciclo infinito de notícias**.  
+- Todas as páginas com **blocos de AdSense seguros**.  
+- **Interface moderna, responsiva e intuitiva**.  
+- Páginas legais obrigatórias já integradas ao site.  
+- Código pronto para publicação automática.
